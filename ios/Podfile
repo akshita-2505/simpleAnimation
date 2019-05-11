@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'SimpleAnimation' do
+  pod 'Firebase/Core'
+pod 'Fabric'
+pod 'Crashlytics'
+
+  pod 'RNSVG', :path => '../node_modules/react-native-svg'
+
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
+  pod 'RNAudioStreaming', :path => '../node_modules/react-native-audio-streaming'
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
+end

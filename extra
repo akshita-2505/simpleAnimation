@@ -1,0 +1,259 @@
+import React, {Component} from 'react';
+import {View, Text, TouchableOpacity, Image, Animated, Easing, Dimensions} from 'react-native';
+
+
+const {
+    width: SCREEN_WIDTH,
+    height: SCREEN_HEIGHT,
+} = Dimensions.get('window');
+export default class animationDemo extends  Component{
+
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+        this.offset = new Animated.Value(SCREEN_HEIGHT);
+        this.animatedValue = new Animated.Value(0);
+
+        this.position = new Animated.Value(150);
+    }
+
+    renderView = () => {
+        return(
+            <Animated.View style={{height:400, width:'90%',
+                backgroundColor:'#d5e0e0',transform: [{translateY: this.offset}]}}>
+                <Text>{'Here subComponents'}</Text>
+            </Animated.View>
+        )
+    };
+
+
+    animateView = () => {
+        Animated.timing(this.offset, {
+            duration: 500,
+            easing: Easing.bezier(0.175, 0.885, 0.32, 1.275),
+            toValue: 10,
+        }).start();
+    };
+
+
+    cycleAnimation = () => {
+        this.animatedValue.setValue({x: 0, y: -((SCREEN_WIDTH * 10.67) - SCREEN_HEIGHT)});
+        Animated.timing(this.animatedValue, {
+            toValue: {x: 0, y: 0},
+            duration: 90000,
+            easing: Easing.linear
+        }, {useNativeDriver: true}).start(() => {
+            setTimeout(() => {
+                this.cycleAnimation();
+            }, 0)
+        });
+    };
+
+    renderConfettiView = () => {
+        return(
+            <View style={{position: 'absolute', width: '100%', height: SCREEN_HEIGHT,backgroundColor:"#ffffff"}}>
+                <Animated.View style={{
+                    width: SCREEN_WIDTH, height: SCREEN_WIDTH * 10.67,
+                    marginTop: this.animatedValue.y
+                }}>
+                    <Image source={{uri:'https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}}
+                           resizeMode={"contain"}
+                           style={{
+                               width: SCREEN_WIDTH,
+                               height: SCREEN_WIDTH * 10.67,
+                               opacity: 0.3
+                           }}/>
+                </Animated.View>
+            </View>
+        )
+    };
+
+    sizeAnimation = () => {
+        Animated.timing(this.animatedValue,{
+            toValue:1,
+            duration:100
+        }).start()
+
+        // Animated.timing(this.position, {
+        //     duration: 500,
+        //     toValue: 0,
+        // }).start(()=>{
+        //     Animated.timing(this.position, {
+        //         duration: 500,
+        //         toValue: 150,
+        //     }).start();
+        // });
+    };
+
+    render(){
+        const interpolateRotation = this.animatedValue.interpolate({
+            inputRange:[0,1],
+            outputRange:['0deg','180deg']
+        });
+        const animatedStyle = {
+            transform: [
+                {rotate:interpolateRotation}
+            ]
+        };
+        return(
+            <View style={{flex:1, justifyContent:'center', alignItems:'center',backgroundColor:"#ffffff"}}>
+
+
+                <View style={{flexDirection:'row'}}>
+                    <Text style={{padding:10}}
+                          onPress={this.sizeAnimation}>{'zoomout'}</Text>
+
+                </View>
+                {/*{ this.renderView() }*/}
+
+                <Animated.View style={[animatedStyle,{height:this.position,width:this.position, backgroundColor:'pink'}]}/>
+
+
+
+
+            </View>
+        )
+    }
+}
+
+
+/*
+
+   {/*{this.renderConfettiView()}
+
+<Text style={{padding:10}}
+    onPress={this.animateView}>{'popup'}</Text>
+<Text style={{padding:10}}
+    onPress={this.cycleAnimation}>{'confetti animation'}</Text>
+
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ import React, {Component} from 'react';
+ import {View, Text, TouchableOpacity, Image, Animated, Easing, Dimensions} from 'react-native';
+
+
+ const {
+     width: SCREEN_WIDTH,
+     height: SCREEN_HEIGHT,
+ } = Dimensions.get('window');
+ export default class animationDemo extends  Component{
+
+     constructor(props) {
+         super(props);
+         this.state = {
+
+         };
+         this.offset = new Animated.Value(SCREEN_HEIGHT);
+         this.animatedValue = new Animated.ValueXY(0, 0);
+
+         this.position = new Animated.Value(150);
+     }
+
+     renderView = () => {
+         return(
+             <Animated.View style={{height:400, width:'90%',
+                 backgroundColor:'#d5e0e0',transform: [{translateY: this.offset}]}}>
+                 <Text>{'Here subComponents'}</Text>
+             </Animated.View>
+         )
+     };
+
+
+     animateView = () => {
+         Animated.timing(this.offset, {
+             duration: 500,
+             easing: Easing.bezier(0.175, 0.885, 0.32, 1.275),
+             toValue: 10,
+         }).start();
+     };
+
+
+     cycleAnimation = () => {
+         this.animatedValue.setValue({x: 0, y: -((SCREEN_WIDTH * 10.67) - SCREEN_HEIGHT)});
+         Animated.timing(this.animatedValue, {
+             toValue: {x: 0, y: 0},
+             duration: 90000,
+             easing: Easing.linear
+         }, {useNativeDriver: true}).start(() => {
+             setTimeout(() => {
+                 this.cycleAnimation();
+             }, 0)
+         });
+     };
+
+     renderConfettiView = () => {
+         return(
+             <View style={{position: 'absolute', width: '100%', height: SCREEN_HEIGHT}}>
+                 <Animated.View style={{
+                     width: SCREEN_WIDTH, height: SCREEN_WIDTH * 10.67,
+                     marginTop: this.animatedValue.y
+                 }}>
+                     <Image source={{uri:'https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}}
+                            resizeMode={"contain"}
+                            style={{
+                                width: SCREEN_WIDTH,
+                                height: SCREEN_WIDTH * 10.67,
+                                opacity: 0.3
+                            }}/>
+                 </Animated.View>
+             </View>
+         )
+     };
+
+     sizeAnimation = () => {
+         Animated.timing(this.position, {
+             duration: 500,
+             toValue: 0,
+         }).start(()=>{
+             Animated.timing(this.position, {
+                 duration: 500,
+                 toValue: 150,
+             }).start();
+         });
+     };
+
+     render(){
+         return(
+             <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                 {this.renderConfettiView()}
+
+                 <View style={{flexDirection:'row'}}>
+                     <Text style={{padding:10}}
+                           onPress={this.sizeAnimation}>{'zoomout'}</Text>
+                     <Text style={{padding:10}}
+                           onPress={this.animateView}>{'popup'}</Text>
+                     <Text style={{padding:10}}
+                           onPress={this.cycleAnimation}>{'confetti animation'}</Text>
+
+                 </View>
+                 { this.renderView() }
+
+                 <Animated.View style={{height:this.position,width:this.position, backgroundColor:'red'}}/>
+
+
+
+
+             </View>
+         )
+     }
+ }

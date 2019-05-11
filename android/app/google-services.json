@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "143349828587",
+    "firebase_url": "https://fir-demo-4bc9c.firebaseio.com",
+    "project_id": "fir-demo-4bc9c",
+    "storage_bucket": "fir-demo-4bc9c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:143349828587:android:17c97dec78160bfc",
+        "android_client_info": {
+          "package_name": "com.simpleanimation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "143349828587-t63c0eu4erf80vgib0coe5l6neso4fri.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.simpleanimation",
+            "certificate_hash": "2cd51f71603f6a7c8f99005100ac08db12fd908e"
+          }
+        },
+        {
+          "client_id": "143349828587-no9mki7rdni6aeng83jl3kj4o717k278.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaDnhaHsI_cguj_0xo-pfz22TFRQ1sVkc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "143349828587-no9mki7rdni6aeng83jl3kj4o717k278.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "143349828587-mecvc7r43p5kg4bhtrnavv5tulkli84i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.SimpleAnimation"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
