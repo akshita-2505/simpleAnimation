@@ -4,7 +4,7 @@
  */
 import 'core-js';
 import {AppRegistry} from 'react-native';
-import App from './titleDemo/viewWithTitle';
+import App from './textAnimated';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);
