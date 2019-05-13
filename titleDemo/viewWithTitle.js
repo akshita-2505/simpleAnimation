@@ -6,38 +6,45 @@ import {
     Platform,
     FlatList,
     Animated,
-    ScrollView
+    ScrollView, Dimensions
 } from 'react-native';
 import {
     statusBarHeight,
     headerHeight,
     SafeAreaWithHeader,
 } from './dimensionsHelper';
+import {renderCheck} from '../src/home';
 
 const vw: number = SafeAreaWithHeader.vw;
 const vh: number = SafeAreaWithHeader.vh;
+var {height, width} = Dimensions.get('window');
+
 
 export default class ViewWithTitle extends  Component{
 
-    props: {
-        title: string,
-        children: any,
-        data: Array<Object>,
-        renderItem: () => mixed
-    };
-
-    state: {
-        scrollY: Animated.Value,
-    } = {
-        scrollY: new Animated.Value(0)
-    };
+    constructor(props){
+        super(props);
+        this.state={
+            title: "Watch Now",
+            children:"",
+            data: [{"name":"abc"},{"name":"xyz"}],
+            scrollY: new Animated.Value(0),
+            renderItem: () => this.renderItemData()
+        };
+    }
 
     headerHeight: number = statusBarHeight + headerHeight;
 
+    renderItemData= () => {
+        return (
+            <View style={{width:0,height:0}}/>
+        );
+    }
     renderTitle = () => {
-        if (this.props.title) {
+
+        if (this.state.title) {
             if (Platform.OS === 'ios') {
-                let title = this.props.title;
+                let title = this.state.title;
                 if (title.length > 34) {
                     title = title.substr(0, 32) + "...";
                 }
@@ -63,7 +70,7 @@ export default class ViewWithTitle extends  Component{
                     </Animated.View>
                 )
             } else {
-                let title = this.props.title;
+                let title = this.state.title;
                 if (title.length > 38) {
                     title = title.substr(0, 36) + "...";
                 }
@@ -80,8 +87,8 @@ export default class ViewWithTitle extends  Component{
     };
 
     renderIOSBigTitle = () => {
-        if (Platform.OS === 'ios' && this.props.title) {
-            let title = this.props.title;
+        if (Platform.OS === 'ios' && this.state.title) {
+            let title = this.state.title;
             if (title.length > 19) {
                 title = title.substr(0, 17) + "...";
             }
@@ -109,8 +116,9 @@ export default class ViewWithTitle extends  Component{
 
 
     renderContentArea = () => {
-        if (this.props.children) {
-            let padding = (Platform.OS === 'ios' && this.props.title) ? 56 : 0;
+        debugger
+        // if (this.state.children) {
+            let padding = (Platform.OS === 'ios' && this.state.title) ? 56 : 0;
             return (
                 <ScrollView
                     showsVerticalScrollIndicator={false}
@@ -123,24 +131,24 @@ export default class ViewWithTitle extends  Component{
                 >
                     <View style={[styles.contentContainer, {paddingBottom: padding}]}>
                         {
-                            this.props.children
+                            this.props.handleCode()
                         }
                     </View>
                 </ScrollView>
             )
-        }
+        // }
     };
 
     renderContentAreaList = () => {
-        if (this.props.data && this.props.renderItem) {
-            let headerHeight = (Platform.OS === 'ios' && this.props.title) ? 56 : 0;
+        if (this.state.data && this.state.renderItem) {
+            let headerHeight = (Platform.OS === 'ios' && this.state.title) ? 56 : 0;
             return (
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     scrollEventThrottle={16}
-                    renderItem={ this.props.renderItem }
+                    renderItem={ this.state.renderItem }
                     ListHeaderComponent={ <View style={{width: 100 * vw, height: headerHeight}}/> }
-                    data={this.props.data}
+                    data={this.state.data}
                     onScroll={
                         Animated.event(
                             [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}]
@@ -152,7 +160,7 @@ export default class ViewWithTitle extends  Component{
 
     renderTitleArea = () => {
         return (
-            <View style={[styles.titleContainer, {height: this.headerHeight}]}>
+            <View style={{fontWeight: 'bold',fontSize:25,marginLeft:width*0.1}}>
                 {
                     this.renderTitle()
                 }
@@ -169,7 +177,7 @@ export default class ViewWithTitle extends  Component{
                 {
                     this.renderTitleArea()
                 }
-                <View style={[styles.innerContainer, {height: 100 * vh}]}>
+                <View style={[styles.innerContainer, {height:height}]}>
                     {
                         this.renderContentArea()
                     }

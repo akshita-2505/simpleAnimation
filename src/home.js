@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, Text, Button, Image, Dimensions, FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
-
+import Title1 from '../titleDemo/viewWithTitle';
 var {height, width} = Dimensions.get('window');
 
 // console.disableYellowBox = true;
@@ -103,11 +103,9 @@ export default class Home extends  Component{
     keyExtractor = (item) => {
         return item.id ;
     };
-
     renderSeparator = ({leadingItem, section})=>{
         return <View style={{height:10}}/>;
     };
-
     renderEmpty = () => {
         return <View style={{flex:1, alignItems:'center', justifyContent:'center'}}>
             <Text style={{fontSize:15}}>
@@ -115,19 +113,9 @@ export default class Home extends  Component{
             </Text>
         </View>
     };
-    render(){
+    renderCheck(){
         return(
-            <View style={{flex:1,backgroundColor:'white'}}>
-                <ScrollView>
-                <View style={{height:height*0.05,
-                    // backgroundColor:'gray',
-                    top:height*0.03,
-                    width:width,
-                    // alignItems:'center',
-                    justifyContent:'center'
-                }}>
-                    <Text style={{fontWeight: 'bold',fontSize:25,marginLeft:width*0.1}}>Watch Now</Text>
-                </View>
+            <View>
                 <View style={{height:height*0.1}}>
                     <FlatList data={this.state.data}
                               style={{top:height*0.03}}
@@ -194,8 +182,30 @@ export default class Home extends  Component{
 
                               }
                     /></View>
-                </ScrollView>
+                <View style={{height:height*0.3}}>
+                    <FlatList data={this.state.data}
+                              style={{top:height*0.03}}
+                              contentInset={{right:40}}
+                              showsHorizontalScrollIndicator={false}
+                              horizontal={true}
+                              contentContainerStyle={{top:20,left:20}}
+                              automaticallyAdjustContentInsets={false}
+                              renderItem={this.renderItem2}
+                              keyExtractor={this.keyExtractor}
+                              ItemSeparatorComponent={this.renderSeparator}
+                              ListEmptyComponent={this.renderEmpty}
+                              ListFooterComponent={<View style={{ height: 50}}/>
+
+                              }
+                    /></View>
             </View>
+        )
+    }
+
+    render(){
+        return(
+            <Title1 title={"Watch Now"} handleCode={()=>this.renderCheck()}/>
+
         )
     }
 }
