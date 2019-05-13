@@ -179,7 +179,6 @@ export default class Home extends  Component{
                               ItemSeparatorComponent={this.renderSeparator}
                               ListEmptyComponent={this.renderEmpty}
                               ListFooterComponent={<View style={{ height: 50}}/>
-
                               }
                     /></View>
             </View>
@@ -189,7 +188,6 @@ export default class Home extends  Component{
     render(){
         return(
             <Title1 title={"Watch Now"} handleCode={()=>this.renderCheck()}/>
-
         )
     }
 }

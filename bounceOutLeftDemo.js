@@ -3,9 +3,11 @@ import { StyleSheet,
     Text,
     View,
     Easing,
+    Dimensions,
     Animated,
     TouchableHighlight,
     ScrollView} from 'react-native';
+const {height,width} = Dimensions.get('window')
 
 export  default class bounceOutLeftDemo extends Component {
 
@@ -29,13 +31,13 @@ export  default class bounceOutLeftDemo extends Component {
     render () {
         const marginLeft = this.animatedValue.interpolate({
             inputRange: [0, 1],
-            outputRange: ['0deg','90deg']
+            outputRange: [0, width]
         });
 
-        // const interpolateRotation = this.animatedValue.interpolate({
-        //     inputRange:[0,1],
-        //     outputRange:['0deg','90deg']
-        // });
+        const interpolateRotation = this.animatedValue.interpolate({
+            inputRange:[0,1],
+            outputRange:['0deg','90deg']
+        });
         const animatedStyle = {
             transform: [
                 {rotate:marginLeft}
@@ -44,10 +46,8 @@ export  default class bounceOutLeftDemo extends Component {
 
         return (
             <View style={styles.container}>
-                <Animated.View style={[styles.block, {animatedStyle} ]} />
+                <Animated.View style={[styles.block, {marginLeft} ]} />
                 <ScrollView>
-                    <Text style={{textAlign: 'center'}}>Scroll up for more animations</Text>
-
                     <Button easing='Out' onPress={this.animate.bind(this, Easing.out(Easing.quad))} />
                 </ScrollView>
             </View>
@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     block: {
         width: 50,
         height: 50,
-        backgroundColor: 'red'
+        backgroundColor: 'red',
+        // top:60
     }
 });
 
