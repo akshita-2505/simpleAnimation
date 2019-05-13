@@ -1,4 +1,11 @@
+
 {
   "name": "SimpleAnimation",
-  "displayName": "SimpleAnimation"
+  "displayName": "SimpleAnimation",
+  "ios": {
+    "bundleIdentifier": "com.googleMapDemo",
+    "config": {
+      "googleMapsApiKey": "AIzaSyCt13beXT1YQ35MHus6EovuvUaVMLmjHRY"
+    }
+  }
 }

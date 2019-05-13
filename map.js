@@ -44,10 +44,10 @@ export default class Map extends  Component{
         return(
             <View style={{flex:1}}>
                 <MapView
+                    // provider="google"
                     style={{ flex: 1 }}
                     region={this.state.initialPosition}
                 >
-
                     <MapView.Marker
                         coordinate={{
                             latitude: this.state.initialPosition.latitude,
