@@ -23,10 +23,16 @@ export default class Map extends  Component{
     }
 
     componentDidMount() {
+
         navigator.geolocation.getCurrentPosition((position) => {
                 var lat = parseFloat(position.coords.latitude)
                 var long = parseFloat(position.coords.longitude)
-
+                // this.map.animateToRegion({
+                //     latitude: position.coords.latitude,
+                //     longitude: position.coords.longitude,
+                //     latitudeDelta: 0.005,
+                //     longitudeDelta: 0.005
+                // })
                 var initialRegion = {
                     latitude: lat,
                     longitude: long,
