@@ -182,22 +182,6 @@ export default class Home extends  Component{
 
                               }
                     /></View>
-                <View style={{height:height*0.3}}>
-                    <FlatList data={this.state.data}
-                              style={{top:height*0.03}}
-                              contentInset={{right:40}}
-                              showsHorizontalScrollIndicator={false}
-                              horizontal={true}
-                              contentContainerStyle={{top:20,left:20}}
-                              automaticallyAdjustContentInsets={false}
-                              renderItem={this.renderItem2}
-                              keyExtractor={this.keyExtractor}
-                              ItemSeparatorComponent={this.renderSeparator}
-                              ListEmptyComponent={this.renderEmpty}
-                              ListFooterComponent={<View style={{ height: 50}}/>
-
-                              }
-                    /></View>
             </View>
         )
     }
