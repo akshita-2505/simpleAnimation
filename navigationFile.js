@@ -11,6 +11,11 @@ import ButtonAnimated from './buttonAnimated';
 import TextAnimated from './textAnimated';
 import Dark from './dark';
 import Notes from './notes';
+import Map from './map';
+import MapRoad from './mapRoad';
+import Scanner from './scanner';
+import LineChartDemo from './lineChartDemo';
+import GraphDemo from './graphDemo';
 
 const bottom = createBottomTabNavigator({
     ButtonAnimated,
@@ -22,7 +27,12 @@ const bottom = createBottomTabNavigator({
 const drawer = createDrawerNavigator({
     bottom,
     Dark,
-    Notes
+    Notes,
+    Map,
+    MapRoad,
+    Scanner,
+    LineChartDemo,
+    GraphDemo
 },{
     initialRouteName:'bottom'
 });
