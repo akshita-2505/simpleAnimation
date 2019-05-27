@@ -5,6 +5,9 @@ import android.app.Application;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 import com.facebook.react.ReactApplication;
+import com.futurice.rctaudiotoolkit.AudioPackage;
+import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
+import com.guichaguri.trackplayer.TrackPlayer;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.sandro.openalpr.CameraReactPackage;
@@ -35,6 +38,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new AudioPackage(),
+            new RNSoundPlayerPackage(),
+            new TrackPlayer(),
             new RNGestureHandlerPackage(),
             new VectorIconsPackage(),
             new CameraReactPackage(),
