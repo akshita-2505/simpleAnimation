@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {View, Text, TouchableOpacity, Image, Animated, Easing, Dimensions} from 'react-native';
 
-
 const {
     width: SCREEN_WIDTH,
     height: SCREEN_HEIGHT,
@@ -82,6 +81,7 @@ export default class animationDemo extends  Component{
                    <Text style={{fontSize:15}}
                           onPress={this.sizeAnimation}>{'BounceOutLeft'}</Text>
                 </Animated.View>
+                <View><Text onPress={()=>this.props.navigation.navigate('ButtonAnimated')}>Click</Text></View>
             </View>
         )
     }

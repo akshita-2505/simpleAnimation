@@ -10,7 +10,7 @@
 
 import 'core-js';
 import {AppRegistry} from 'react-native';
-import App from './mapRoad';
+import App from './allInOne';
 import {name as appName} from './app.json';
 
 AppRegistry.registerComponent(appName, () => App);

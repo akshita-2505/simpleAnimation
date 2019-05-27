@@ -179,6 +179,9 @@ const Examples = () => (
         <Example3 />
         <Example4 />
         <Example5 />
+        <View><Text
+            style={{color:'black'}}
+            onPress={()=>this.props.navigation.openDrawer()}>Click</Text></View>
     </ScrollView>
 );
 
